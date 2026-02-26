@@ -1,0 +1,60 @@
+[{
+  "_id": {
+    "$oid": "65eac228cad04c06f40a93f5"
+  },
+  "location": "Chennai",
+  "department": "StreetLight",
+  "name": "Officer",
+  "email": "officer@gmail.com",
+  "passwordHash": "$2a$10$z.0yv9mBK.xrrjPeLftKf.ASFFU2n.Q79Xpgx2qfIwr5ROwK0kSYa",
+  "mobile": "9876543210",
+  "dateCreated": {
+    "$date": "2024-03-08T07:45:44.517Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65eac430cad04c06f40a942a"
+  },
+  "location": "Banglore",
+  "department": "PipeLeakage",
+  "name": "Officer1",
+  "email": "officer1@gmail.com",
+  "passwordHash": "$2a$10$M0o6flv5.YrM14whNEsgNeVlNa49.1gPxVLqnzh70eMHMVksIbxcq",
+  "mobile": "9876543210",
+  "dateCreated": {
+    "$date": "2024-03-08T07:54:24.372Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65f2deb006675215d4e00f8d"
+  },
+  "location": "Mumbai",
+  "department": null,
+  "name": "Mr. Ram",
+  "email": "ram@gmail.com",
+  "passwordHash": "$2a$10$W3QSRgIvzzFYS.VssWfa4uLgezNeBJq04DuibdfVPxzgFpud4Dv2O",
+  "mobile": "9876543210",
+  "dateCreated": {
+    "$date": "2024-03-14T11:25:36.670Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66750dc3a9057a2c08251d3b"
+  },
+  "location": "Chennai",
+  "department": "true",
+  "name": "Krunal",
+  "email": "krunal@gmail.com",
+  "passwordHash": "$2a$10$aikQ99x7RFGdcZpHjv7KCOnfgpdgBsAvVmkPjJQVXaDGUPi.8rDsy",
+  "mobile": "7839556614",
+  "dateCreated": {
+    "$date": "2024-06-21T05:21:07.903Z"
+  },
+  "__v": 0
+}]

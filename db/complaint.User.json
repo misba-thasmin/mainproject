@@ -1,0 +1,31 @@
+[{
+  "_id": {
+    "$oid": "65952f699730e239c47dd414"
+  },
+  "isAdmin": false,
+  "city": "chennai",
+  "name": "User2",
+  "email": "user2@gmail.com",
+  "passwordHash": "$2a$10$yPdBQfEkoHRIjSPL9IKwo.7P2aqRdzUtPBk2eyWbw.p5je5SjNFVW",
+  "phone": "1234567890",
+  "question1": "dog",
+  "question2": "sathish",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65f2c058888eba47d08e2708"
+  },
+  "isAdmin": false,
+  "city": "Chennai",
+  "name": "User",
+  "email": "user@gmail.com",
+  "passwordHash": "$2a$10$dWJRzt6Tn5Ie7reYhQ5GdeY7GhHia/myas6aN2FKreO1VZyuEMdvG",
+  "phone": "0987654321",
+  "question1": "dog",
+  "question2": "siva",
+  "dateCreated": {
+    "$date": "2024-03-14T09:16:08.895Z"
+  },
+  "__v": 0
+}]

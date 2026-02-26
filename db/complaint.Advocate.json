@@ -1,0 +1,42 @@
+[{
+  "_id": {
+    "$oid": "661632fb967e3d0e141bd4af"
+  },
+  "isAdmin": false,
+  "city": "kkr",
+  "name": "advocate",
+  "email": "advocate@gmail.com",
+  "passwordHash": "$2a$10$gl3kzyOsMLM2cMHk/gbILeFJjx.UVPSJHx13qBkNpOENY9iN0QrrK",
+  "phone": "1234567890",
+  "question1": "dog",
+  "question2": "advocate",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66163368967e3d0e141bd4b1"
+  },
+  "isAdmin": false,
+  "city": "CityName",
+  "name": "John Doe",
+  "email": "johndoe@example.com",
+  "passwordHash": "$2a$10$YVExsbfPNgmNZZNErUJKjuCe7xWGNfEK0hHNiVLg.LFTn6GXmKM0.",
+  "phone": "1234567890",
+  "question1": "Question 1 Answer",
+  "question2": "Question 2 Answer",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "661909b48135c20614408ece"
+  },
+  "isAdmin": false,
+  "city": "karnataka",
+  "name": "Advocate2",
+  "email": "advocate2@gmail.com",
+  "passwordHash": "$2a$10$86Rt.q.PntPHtUQ0wqDfGOuwtcXqu3xMeQ5DgCLXrKU6ywB3zRsYy",
+  "phone": "9302165478",
+  "question1": "cat",
+  "question2": "arun",
+  "__v": 0
+}]

@@ -1,0 +1,66 @@
+[{
+  "_id": {
+    "$oid": "65f2cc020b5f2a4d981bd401"
+  },
+  "adminemail": "admin@gmail.com",
+  "location": "Chennai",
+  "dateCreated": {
+    "$date": "2024-03-14T10:05:54.215Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65f2d047098b81263cb9c7e5"
+  },
+  "adminemail": "admin@gmail.com",
+  "location": "Banglore",
+  "dateCreated": {
+    "$date": "2024-03-14T10:24:07.948Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65f2d070098b81263cb9c7eb"
+  },
+  "adminemail": "admin@gmail.com",
+  "location": "Delhi",
+  "dateCreated": {
+    "$date": "2024-03-14T10:24:48.836Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65f2d096098b81263cb9c7f2"
+  },
+  "adminemail": "admin@gmail.com",
+  "location": "Hyderabad",
+  "dateCreated": {
+    "$date": "2024-03-14T10:25:26.524Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65f2d509098b81263cb9c810"
+  },
+  "adminemail": "admin@gmail.com",
+  "location": "Mumbai",
+  "dateCreated": {
+    "$date": "2024-03-14T10:44:25.967Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65f2d75927c6f72d48384e03"
+  },
+  "adminemail": "admin@gmail.com",
+  "location": "Kumbakonam",
+  "dateCreated": {
+    "$date": "2024-03-14T10:54:17.500Z"
+  },
+  "__v": 0
+}]

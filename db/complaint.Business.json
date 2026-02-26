@@ -1,0 +1,44 @@
+[{
+  "_id": {
+    "$oid": "6618d7ca8bc7b93ac0479e6b"
+  },
+  "lat": 10.9684,
+  "long": 79.3967583,
+  "status": "Approved",
+  "advocateemail": "advocate@gmail.com",
+  "name": "adhvan",
+  "service": "advocate",
+  "available": "morning to evning",
+  "locality": "karnataka",
+  "address": "karnataka",
+  "city": "karnataka",
+  "mobile": {
+    "$numberLong": "9321654780"
+  },
+  "dateCreated": {
+    "$date": "2024-04-12T06:42:18.083Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6618d8198bc7b93ac0479e71"
+  },
+  "lat": 10.7604408,
+  "long": 79.1266288,
+  "status": "Approved",
+  "advocateemail": "advocate@gmail.com",
+  "name": "arun",
+  "service": "advocate",
+  "available": "morning to evning",
+  "locality": "kolkatta",
+  "address": "kolkatta",
+  "city": "kolkatta",
+  "mobile": {
+    "$numberLong": "9874561230"
+  },
+  "dateCreated": {
+    "$date": "2024-04-12T06:43:37.542Z"
+  },
+  "__v": 0
+}]
