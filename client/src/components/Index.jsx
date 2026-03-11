@@ -1,117 +1,115 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import "./css/bootstrap.min.css";
-import "./css/owl.carousel.min.css";
-import "./css/font-awesome.min.css";
-import "./css/animate.css";
-import "./css/font-awesome.min.css";
-import "./css/lineicons.min.css";
-import "./css/magnific-popup.css";
-import "./css/style.css";
-import "./js/jquery.min.js";  
-import "./js/bootstrap.bundle.min.js";
-{/*
-import "./js/waypoints.min.js";
-import "./js/jquery.easing.min.js";
-import "./js/owl.carousel.min.js";
-import "./js/jquery.magnific-popup.min.js";
-*/}
+import "./css/Landing.css";
 import imgSmall from "./img/core-img/logo-small.png";
-import imgBg from "./img/bg-img/accountability.png";
-import imgBack from "./img/bg-img/wall.png";
-import imgMech from "./img/mechanic.png";
-import Logout from './Logout.jsx';
-import Title from './Title.jsx';
 
 const Index = () => {
+  // Add background color for light mode directly to body
+  useEffect(() => {
+    document.body.style.backgroundColor = '#f8fafc';
+    return () => {
+      document.body.style.backgroundColor = ''; // Reset on unmount
+    }
+  }, []);
+
   return (
-    <div>
-      
-      
-        <div className="header-area" id="headerArea">
-        <div className="container h-100 d-flex align-items-center justify-content-between">
-    
-        <div className="header-area" id="headerArea">
-        <div className="container h-100 d-flex align-items-center justify-content-between">
-            <div className="logo-wrapper" style={{color:'Black'}}><img src={imgSmall} alt=""/><Title /> </div>
-        
-            <div className="suha-navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#suhaOffcanvas" aria-controls="suhaOffcanvas"><span></span><span></span><span></span></div>
+    <div className="landing-container">
+      {/* Navigation Bar */}
+      <nav className="glass-nav">
+        <div className="brand-section">
+          <img src={imgSmall} alt="Logo" className="brand-logo" />
+          <h1 className="brand-text">Child Safety Portal</h1>
         </div>
-        </div>  
+        <div className="nav-links">
+          {/* Add secondary links here if needed */}
+        </div>
+      </nav>
 
-{/* tabindex="-1" */}
-        <div className="offcanvas offcanvas-start suha-offcanvas-wrap"  id="suhaOffcanvas" aria-labelledby="suhaOffcanvasLabel">
-      <button className="btn-close btn-close-white text-reset" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      {/* Hero Section */}
+      <header className="hero-wrapper">
+        <h1 className="hero-title">
+          Online POCSO Child <br /><span>Complaint Management</span> System
+        </h1>
+        <p className="hero-subtitle">
+          A secure, anonymous, and fast platform dedicated to protecting children. Report incidents securely and track them with the help of designated officers, advocates, and administrators.
+        </p>
+      </header>
 
-      <div className="offcanvas-body">
-        <div className="sidenav-profile">
-          <div className="user-profile"><img src={imgBg} alt=""/></div>
-          <div className="user-info">
-            <h6 className="user-name mb-1">Online Complaint Registration Management System</h6>
-         
+      {/* Main Portals Grid */}
+      <main className="portals-grid">
+        {/* User Portal */}
+        <Link to="/user_auth" className="portal-card">
+          <div className="portal-icon user-icon">
+            <i className="fa fa-user"></i>
           </div>
+          <h2 className="portal-title">Citizen Portal</h2>
+          <p className="portal-desc">Report incidents anonymously, track your complaints, and communicate securely.</p>
+          <div className="portal-btn btn-primary-glass">Access Portal</div>
+        </Link>
+
+        {/* Officer Portal */}
+        <Link to="/officer_login" className="portal-card">
+          <div className="portal-icon officer-icon">
+            <i className="fa fa-shield"></i>
+          </div>
+          <h2 className="portal-title">Officer Portal</h2>
+          <p className="portal-desc">Investigate reports, update statuses, and manage critical information.</p>
+          <div className="portal-btn btn-warning-glass">Access Portal</div>
+        </Link>
+
+        {/* Advocate Portal */}
+        <Link to="/advocate_auth" className="portal-card">
+          <div className="portal-icon advocate-icon">
+            <i className="fa fa-balance-scale"></i>
+          </div>
+          <h2 className="portal-title">Advocate Portal</h2>
+          <p className="portal-desc">Provide legal assistance and follow up on cases for justice.</p>
+          <div className="portal-btn btn-success-glass">Access Portal</div>
+        </Link>
+
+        {/* Admin Portal */}
+        <Link to="/admin_login" className="portal-card">
+          <div className="portal-icon admin-icon">
+            <i className="fa fa-cog"></i>
+          </div>
+          <h2 className="portal-title">Admin Portal</h2>
+          <p className="portal-desc">Oversee system operations, manage users, and review analytics.</p>
+          <div className="portal-btn btn-danger-glass">Access Portal</div>
+        </Link>
+
+        {/* AI Assistant Portal */}
+        <Link to="/ai_assistant" className="portal-card">
+          <div className="portal-icon" style={{ color: '#a855f7' }}>
+            <i className="fa fa-robot"></i>
+          </div>
+          <h2 className="portal-title">AI Legal Assistant</h2>
+          <p className="portal-desc">Ask questions instantly and get structured advice on crimes and legal sections.</p>
+          <div className="portal-btn" style={{ background: 'rgba(168, 85, 247, 0.1)', color: '#c084fc', border: '1px solid rgba(168, 85, 247, 0.3)' }}>Ask AI</div>
+        </Link>
+      </main>
+
+      {/* Features Overview */}
+      <section className="features-container">
+        <div className="feature-item">
+          <i className="fa fa-lock"></i>
+          <span>Secure & Confidential</span>
         </div>
-    
-        <ul className="sidenav-nav ps-0">
-          <li><Link to="/user_auth">User Login/Register</Link></li>
-          {/*<li><Link to="/user_auth">User Login/Register</Link></li>*/}
-    
-          </ul>
-      </div>
+        <div className="feature-item">
+          <i className="fa fa-bolt"></i>
+          <span>Rapid Response</span>
+        </div>
+        <div className="feature-item">
+          <i className="fa fa-gavel"></i>
+          <span>Legal Support</span>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="landing-footer">
+        <p>&copy; {new Date().getFullYear()} Online Complaint Registration Management System. All Rights Reserved.</p>
+      </footer>
     </div>
-      </div>
-    </div>
+  );
+};
 
-      <div className="container ">
-        <div className="pt-3">
-            <div className="single-hero-slide" >
-                <img src={imgBack} className="img-fluid"   />
-            </div>            
-      </div>
-      </div>
-<br></br>
-
-      <div className="product-catagories-wrapper py-3 justify-content-center text-center">
-        <div className="container">
-          <div className="section-heading">
-
-          </div>
-          <div className="product-catagory-wrap">
-            <div className="row g-3">
-              <div className="col-6">
-                <div className="card catagory-card">
-               <Link to="/user_auth" className="btn btn-warning btn-lg w-100">
-                    User </Link>
-                </div>
-              </div>
-			   <div className="col-6">
-                <div className="card catagory-card">
-                  <Link to="/officer_login" className="btn btn-warning btn-lg w-100" >
-                    Officer </Link>
-                </div>
-              </div>
-			   <div className="col-6">
-                <div className="card catagory-card">
-					      <Link to="/admin_login" className="btn btn-warning btn-lg w-100" >
-                    Admin</Link>
-                </div>
-              </div>
-              <div className="col-6">
-                <div className="card catagory-card">
-					      <Link to="/advocate_auth" className="btn btn-warning btn-lg w-100" >
-                Advocate</Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
-
-</div>
-  )
-}
-
-export default Index
+export default Index;

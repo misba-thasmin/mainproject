@@ -1,0 +1,286 @@
+.landing-container {
+  min-height: 100vh;
+  /* Light mode modern gradient background */
+  background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+  color: #1e293b;
+  font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism Navbar */
+.glass-nav {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.brand-logo {
+  height: 40px;
+  width: auto;
+  filter: drop-shadow(0 0 8px rgba(0,0,0,0.1));
+}
+
+.brand-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+}
+
+/* Hero Section */
+.hero-wrapper {
+  padding: 6rem 2rem 4rem;
+  text-align: center;
+  position: relative;
+}
+
+/* Glowing orb effect behind text */
+.hero-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  color: #0f172a;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title span {
+  background: linear-gradient(to right, #2563eb, #6366f1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: #475569;
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+/* Portals Grid */
+.portals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Glassmorphism Cards */
+.portal-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  color: #1e293b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+/* Card Hover Effects */
+.portal-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: rgba(59, 130, 246, 0.2);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1), 
+              0 0 20px rgba(59, 130, 246, 0.15);
+  color: #1e293b;
+}
+
+/* Gradient borders on hover using pseudo-element */
+.portal-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #6366f1, transparent);
+  transition: left 0.5s ease;
+}
+
+.portal-card:hover::before {
+  left: 100%;
+}
+
+.portal-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+}
+
+/* Specific Icon Colors */
+.user-icon { color: #0ea5e9; }
+.officer-icon { color: #eab308; }
+.admin-icon { color: #ef4444; }
+.advocate-icon { color: #10b981; }
+
+.portal-card:hover .portal-icon {
+  background: #ffffff;
+  transform: scale(1.1);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.portal-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #0f172a;
+  letter-spacing: -0.025em;
+}
+
+.portal-desc {
+  font-size: 0.95rem;
+  color: #475569;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+/* Modern Button inside Card */
+.portal-btn {
+  margin-top: auto;
+  width: 100%;
+  padding: 0.8rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-primary-glass {
+  background: rgba(14, 165, 233, 0.1);
+  color: #0284c7;
+  border: 1px solid rgba(14, 165, 233, 0.2);
+}
+
+.btn-warning-glass {
+  background: rgba(234, 179, 8, 0.1);
+  color: #ca8a04;
+  border: 1px solid rgba(234, 179, 8, 0.2);
+}
+
+.btn-danger-glass {
+  background: rgba(239, 68, 68, 0.1);
+  color: #b91c1c;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.btn-success-glass {
+  background: rgba(16, 185, 129, 0.1);
+  color: #047857;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.portal-card:hover .btn-primary-glass { background: #0ea5e9; color: #ffffff; border-color: #0ea5e9; }
+.portal-card:hover .btn-warning-glass { background: #eab308; color: #ffffff; border-color: #eab308; }
+.portal-card:hover .btn-danger-glass { background: #ef4444; color: #ffffff; border-color: #ef4444; }
+.portal-card:hover .btn-success-glass { background: #10b981; color: #ffffff; border-color: #10b981; }
+
+/* Features Section */
+.features-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #475569;
+  font-weight: 500;
+}
+
+.feature-item i {
+  color: #6366f1;
+  font-size: 1.5rem;
+}
+
+/* Footer */
+.landing-footer {
+  text-align: center;
+  padding: 2rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  color: #64748b;
+  font-size: 0.9rem;
+  margin-top: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .glass-nav {
+    padding: 1rem;
+  }
+  
+  .brand-text {
+    font-size: 1rem;
+  }
+}

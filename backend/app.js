@@ -9,24 +9,24 @@ const bodyParser = require('body-parser');
 
 const fs = require('fs').promises;
 const path = require('path');
-const configPath = path.resolve(__dirname,    'helpers', 'config.json');
+const configPath = path.resolve(__dirname, 'helpers', 'config.json');
 
 const machineId = require('node-machine-id');
 let machineID; // Declare machineID variable
-let license ="u3Y65£,;7Y#I";
+let license = "u3Y65£,;7Y#I";
 
 // Get the machine ID
 machineId.machineId()
   .then(id => {
     machineID = id;
-   // console.log('Machine ID:', id);
+    // console.log('Machine ID:', id);
     //console.log('license ID:', license);
   })
   .catch(error => {
     console.error('Error getting machine ID:', error);
   });
 
-  
+
 
 
 
@@ -58,6 +58,7 @@ const userRoutes = require('./routes/user');
 const officerRoutes = require('./routes/officer');
 const adminRoutes = require('./routes/admin');
 const complaintRoutes = require('./routes/complaint');
+const aiRoutes = require('./routes/ai');
 const locationRoutes = require('./routes/location');
 const advocateRoutes = require('./routes/advocate');
 const businesssRoutes = require('./routes/business');
@@ -78,6 +79,7 @@ app.use(`${api}/user`, userRoutes);
 app.use(`${api}/admin`, adminRoutes);
 app.use(`${api}/officer`, officerRoutes);
 app.use(`${api}/complaint`, complaintRoutes);
+app.use(`${api}/ai`, aiRoutes);
 app.use(`${api}/location`, locationRoutes);
 
 
@@ -90,22 +92,22 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 
 //Database
 mongoose.connect(process.env.CONNECTION_STRING, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false, // Add this line
-    dbName: 'complaint'
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false, // Add this line
+  dbName: 'complaint'
 })
-.then(()=>{
+  .then(() => {
     console.log('Database Connection is ready...')
-})
-.catch((err)=> {
+  })
+  .catch((err) => {
     console.log(err);
-})
+  })
 
 //Server
-app.listen(4000, ()=>{
+app.listen(4000, () => {
 
-    console.log('server is running http://localhost:4000');
+  console.log('server is running http://localhost:4000');
 })
 
 {/*

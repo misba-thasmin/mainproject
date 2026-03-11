@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 // name, email, password, phone, city.
 
 const officerSchema = new mongoose.Schema({
-  
     name: {
         type: String,
         required: true,
@@ -25,10 +24,18 @@ const officerSchema = new mongoose.Schema({
         type: String,
         default: true,
     },
-    // department: {
-    //     type: String,
-    //     default: true,
-    // },
+    city: { type: String },
+    image: { type: String },
+    officerId: { type: String },
+    department: { type: String },
+    designation: { type: String },
+    policeStation: { type: String },
+    district: { type: String },
+    state: { type: String },
+    experience: { type: String },
+    officeContact: { type: String },
+    joiningDate: { type: String },
+    address: { type: String },
     dateCreated: {
         type: Date,
         default: Date.now

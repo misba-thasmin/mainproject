@@ -1,153 +1,176 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import "./css/bootstrap.min.css";
 import "./css/owl.carousel.min.css";
 import "./css/font-awesome.min.css";
 import "./css/animate.css";
-import "./css/font-awesome.min.css";
 import "./css/lineicons.min.css";
 import "./css/magnific-popup.css";
 import "./css/style.css";
-import "./js/jquery.min.js";  
+import "./js/jquery.min.js";
 import "./js/bootstrap.bundle.min.js";
-{/*
-import "./js/waypoints.min.js";
-import "./js/jquery.easing.min.js";
-import "./js/owl.carousel.min.js";
-import "./js/jquery.magnific-popup.min.js";
-*/}
+import "./css/Landing.css"; // Import the landing styles
+
 import imgSmall from "./img/core-img/logo-small.png";
 import imgBg from "./img/bg-img/9.png";
-import imgMech from "./img/mechanic.png";
-import imgRequest from "./img/destination.png";
-import imgProfile from "./img/user.png";
-import newcomplaint from "./img/bg-img/complaint.png";
-import viewcomplaint from "./img/bg-img/documents.png";
-import imgfeedback from "./img/feedback.png";
 import Logout from './Logout';
 import Title from './Title';
-import image1 from '../assets/img/advocate.png'
 
 const UserHome = () => {
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    // Add light background for the entire page to match portal
+    document.body.style.backgroundColor = '#f8fafc';
+
+    // Fetch user info for sidebar
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch('http://localhost:4000/api/v1/user/');
+        const data = await response.json();
+        const useremail = decodeURIComponent(document.cookie.replace(/(?:(?:^|.*;\s*)email\s*=\s*([^;]*).*$)|^.*$/, '$1'));
+
+        const currentUser = data.find((user) => user.email === useremail);
+        if (currentUser) {
+          setUserData(currentUser);
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error.message);
+      }
+    };
+    fetchUserData();
+
+    return () => {
+      document.body.style.backgroundColor = ''; // Reset on unmount
+    }
+  }, []);
+
   return (
-    <div>
-        <div>
-      
-        <div className="header-area" id="headerArea">
+    <div className="landing-container">
+      {/* Header Area styled with Glassmorphism */}
+      <div className="header-area glass-nav" id="headerArea" style={{ position: 'sticky', top: 0, zIndex: 1000, padding: '1rem' }}>
         <div className="container h-100 d-flex align-items-center justify-content-between">
-    
-        <div className="header-area" id="headerArea">
-        <div className="container h-100 d-flex align-items-center justify-content-between">
-            <div className="logo-wrapper" style={{color:'black'}}><img src={imgSmall} alt=""/> <Title /> </div>
-        
-            <div className="suha-navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#suhaOffcanvas" aria-controls="suhaOffcanvas"><span></span><span></span><span></span></div>
-        </div>
-        </div>  
+          <div className="logo-wrapper" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <img src={imgSmall} alt="" style={{ height: '30px' }} />
+            <span className="brand-text" style={{ fontSize: '1.25rem', fontWeight: 700 }}><Title /></span>
+          </div>
 
-{/* tabindex="-1" */}
-        <div className="offcanvas offcanvas-start suha-offcanvas-wrap"  id="suhaOffcanvas" aria-labelledby="suhaOffcanvasLabel">
-      <button className="btn-close btn-close-white text-reset" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-
-      <div className="offcanvas-body">
-        <div className="sidenav-profile">
-          <div className="user-profile"><img src={imgBg} alt=""/></div>
-          <div className="user-info">
-            <h6 className="user-name mb-1">Online Complaint Registration</h6>
-         
+          <div className="suha-navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#suhaOffcanvas" aria-controls="suhaOffcanvas" style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+            <span style={{ backgroundColor: 'white', height: '2px', width: '25px', display: 'block' }}></span>
+            <span style={{ backgroundColor: 'white', height: '2px', width: '25px', display: 'block' }}></span>
+            <span style={{ backgroundColor: 'white', height: '2px', width: '25px', display: 'block' }}></span>
           </div>
         </div>
-    
-        <ul className="sidenav-nav ps-0">
-          <li><Link to="/user_home"><i className="lni lni-home"></i>Home</Link></li>
-          <li><Logout /></li>  
+      </div>
+
+      {/* Offcanvas Sidebar with light styling */}
+      <div className="offcanvas offcanvas-start suha-offcanvas-wrap" id="suhaOffcanvas" aria-labelledby="suhaOffcanvasLabel" style={{ backgroundColor: '#ffffff' }}>
+        <button className="btn-close btn-close-dark text-reset" type="button" data-bs-dismiss="offcanvas" aria-label="Close" style={{ margin: '1rem' }}></button>
+
+        <div className="offcanvas-body">
+          <div className="sidenav-profile" style={{ padding: '1rem', textAlign: 'center' }}>
+            <div className="user-profile mb-3" style={{ width: '80px', height: '80px', margin: '0 auto', borderRadius: '50%', overflow: 'hidden', backgroundColor: '#f1f5f9', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 6px rgba(0,0,0,0.05)' }}>
+              {userData && userData.profilePic ? (
+                <img src={`http://localhost:4000/${userData.profilePic}`} alt="Profile" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              ) : (
+                <img src={imgBg} alt="Default" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              )}
+            </div>
+            <div className="user-info">
+              <h6 className="user-name mb-1" style={{ color: '#1e293b' }}>{userData ? userData.name : 'Citizen Account'}</h6>
+            </div>
+          </div>
+
+          <ul className="sidenav-nav ps-0" style={{ listStyle: 'none', padding: '1rem' }}>
+            <li style={{ padding: '10px 0', borderBottom: '1px solid rgba(0,0,0,0.1)' }}>
+              <Link to="/user_home" style={{ color: '#475569', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <i className="lni lni-home"></i>Home
+              </Link>
+            </li>
+            <li style={{ padding: '10px 0' }}>
+              <div style={{ color: '#475569', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <Logout />
+              </div>
+            </li>
           </ul>
+        </div>
       </div>
-    </div>
-      </div>
-    </div>
-    <div className="page-content-wrapper">
-      <div className="top-products-area py-3">
+
+      {/* Main Content Area replacing old tables/cards */}
+      <div className="page-content-wrapper" style={{ minHeight: 'calc(100vh - 140px)', padding: '2rem 0 6rem 0' }}>
         <div className="container">
-          <div className="section-heading d-flex align-items-center justify-content-center">
-            <h4><div style={{color:"darkblue"}}>User Home</div></h4>
+          <div className="section-heading d-flex align-items-center justify-content-center mb-5">
+            <h2 className="hero-title" style={{ fontSize: '2.5rem', marginBottom: 0, textAlign: 'center' }}>
+              User <span>Dashboard</span>
+            </h2>
           </div>
-         
-          <div className="row g-3">
-            <div className="col-6 col-md-4">
-              <div className="card horizontal-product-card">
-                <div className="card-body d-flex align-items-center">
-                  <div className="card-body"><img src={newcomplaint} className="img-fluid" style={{width:64, height:64}} />{" "}
-                  <Link  style={{color:"darkblue"}} to="/post_complaint">
-                   Post Complaint </Link> 
-                    </div>
-                </div>
+
+          <main className="portals-grid" style={{ padding: '0 1rem' }}>
+            {/* Post Complaint */}
+            <Link to="/post_complaint" className="portal-card" style={{ textDecoration: 'none' }}>
+              <div className="portal-icon user-icon">
+                <i className="fa fa-pencil"></i>
               </div>
-            </div>
-           
-         
-          
-            <div className="col-6 col-md-4">
-              <div className="card horizontal-product-card">
-                <div className="card-body d-flex align-items-center">
-                  <div className="card-body"><img src={viewcomplaint} className="img-fluid" style={{width:64, height:64}} />{" "}
-                  <Link  style={{color:"darkblue"}} to="/view_complaint_user">
-                   View My Complaint </Link> 
-                    </div>
-                </div>
+              <h2 className="portal-title">Post Complaint</h2>
+              <p className="portal-desc">Report a new incident securely and anonymously.</p>
+              <div className="portal-btn btn-primary-glass">Create Report</div>
+            </Link>
+
+            {/* View My Complaint */}
+            <Link to="/view_complaint_user" className="portal-card" style={{ textDecoration: 'none' }}>
+              <div className="portal-icon officer-icon">
+                <i className="fa fa-folder-open"></i>
               </div>
-            </div>
-            
+              <h2 className="portal-title">View My Complaint</h2>
+              <p className="portal-desc">Track the status and updates of your submitted complaints.</p>
+              <div className="portal-btn btn-warning-glass">View Status</div>
+            </Link>
 
-            <div className="col-6 col-md-4">
-              <div className="card horizontal-product-card">
-                <div className="card-body d-flex align-items-center">
-                  <div className="card-body"><img src={image1} className="img-fluid" style={{width:64, height:64}} />{" "}
-                  <Link  style={{color:"darkblue"}} to="/view_advocate">
-                   View Advocates </Link> 
-                    </div>
-                </div>
+            {/* View Advocates */}
+            <Link to="/view_advocate" className="portal-card" style={{ textDecoration: 'none' }}>
+              <div className="portal-icon advocate-icon">
+                <i className="fa fa-balance-scale"></i>
               </div>
-            </div>
+              <h2 className="portal-title">View Advocates</h2>
+              <p className="portal-desc">Find and connect with legal advocates for assistance.</p>
+              <div className="portal-btn btn-success-glass">Find Advocates</div>
+            </Link>
 
-
-           
-            <div className="col-6 col-md-4">
-              <div className="card horizontal-product-card">
-                <div className="card-body d-flex align-items-center">
-                <div className="card-body"><i class="lni lni-user" style={{fontSize:'65px', color:'grey' }}></i>{" "}
-                  <Link  style={{color:"darkblue"}} to="/user_profile">
-                   My Profile  </Link> 
-                    </div>
-                </div>
+            {/* My Profile */}
+            <Link to="/user_profile" className="portal-card" style={{ textDecoration: 'none' }}>
+              <div className="portal-icon admin-icon">
+                <i className="fa fa-user"></i>
               </div>
-            </div>
+              <h2 className="portal-title">My Profile</h2>
+              <p className="portal-desc">Manage your account details and personal information.</p>
+              <div className="portal-btn btn-danger-glass">Manage Profile</div>
+            </Link>
+          </main>
+        </div>
+      </div>
 
-            </div>
-
-
-            </div>
-            </div>
-
-
-            </div>
-            
-            <div className="footer-nav-area" id="footerNav">
-              <div className="container h-100 px-0">
-                <div className="suha-footer-nav h-100">
-                  <ul className="h-100 d-flex align-items-center justify-content-between ps-0">
-                    <li className="active"> <Link to="/user_home" ><i className="lni lni-home"></i>Home </Link> </li>
-                    <li><Logout /></li> 
-                    
-                
-                  </ul>
+      {/* Footer Navigation */}
+      <div className="footer-nav-area glass-nav" id="footerNav" style={{ position: 'fixed', bottom: 0, width: '100%', padding: '0 1rem', borderTop: '1px solid rgba(0,0,0,0.05)', borderBottom: 'none', height: '60px', borderRadius: '0', display: 'flex', alignItems: 'center', background: 'rgba(255,255,255,0.9)' }}>
+        <div className="container h-100 px-0">
+          <div className="suha-footer-nav h-100">
+            <ul className="h-100 d-flex align-items-center justify-content-between ps-0 mb-0" style={{ listStyle: 'none', width: '100%' }}>
+              <li className="active">
+                <Link to="/user_home" style={{ color: '#3b82f6', textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', fontSize: '12px' }}>
+                  <i className="lni lni-home" style={{ fontSize: '20px', marginBottom: '2px' }}></i>Home
+                </Link>
+              </li>
+              <li>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: '#64748b' }}>
+                  <Logout />
                 </div>
-              </div>
-            </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-
-</div>
-</div>
+    </div>
   )
 }
 
-export default UserHome
+export default UserHome;
